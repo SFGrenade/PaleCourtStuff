@@ -1,0 +1,57 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net472</TargetFramework>
+    <Product>PaleCourtStuff</Product>
+    <RootNamespace>PaleCourtStuff</RootNamespace>
+    <AssemblyName>PaleCourtStuff</AssemblyName>
+    <AssemblyTitle>PaleCourtStuff</AssemblyTitle>
+    <Description>A Hollow Knight Mod</Description>
+    <Copyright>Copyright © SFGrenade 2024</Copyright>
+    <AssemblyVersion>1.5.0.0</AssemblyVersion>
+    <FileVersion>$(AssemblyVersion)</FileVersion>
+    <ImplicitUsings>false</ImplicitUsings>
+    <DisableImplicitFrameworkReferences>true</DisableImplicitFrameworkReferences>
+    <OutputPath>bin/$(Configuration)/</OutputPath>
+    <LangVersion>latest</LangVersion>
+    <PathMap>$(MSBuildProjectDirectory)=source</PathMap>
+    <AssemblyOriginatorKeyFile>../sgKey.snk</AssemblyOriginatorKeyFile>
+    <HollowKnightRefs />
+    <ExportDir />
+    <!--<GenerateDocumentationFile>true</GenerateDocumentationFile>-->
+  </PropertyGroup>
+  <Import Project="LocalOverrides.targets" Condition="Exists('LocalOverrides.targets')" />
+  <Import Project="build_steps.targets" />
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' AND Exists('$(AssemblyOriginatorKeyFile)') ">
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="$(HollowKnightRefs)/*.dll" />
+    <Reference Include="$(HollowKnightRefs)/Mods/Core_FsmUtil/*.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Resources" />
+    <Folder Include="src" />
+    <Folder Include="test" />
+    <None Include=".gitignore" />
+    <None Include="LICENSE" />
+    <None Include="README.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources/Language.json" />
+    <EmbeddedResource Include="Resources/pcts" />
+    <EmbeddedResource Include="Resources/PaleCourtLogo.png" />
+    <EmbeddedResource Include="Resources/Petal.png" />
+    <EmbeddedResource Include="Resources/FortniteLogo.png" />
+    <EmbeddedResource Include="Resources/MadeWithUnity.png" />
+    <EmbeddedResource Include="Resources/rick" />
+    <EmbeddedResource Include="Resources/SilksongLogo.png" />
+    <EmbeddedResource Include="Resources/PaleCourtLogoNew.png" />
+    <EmbeddedResource Include="Resources/PaleCourtLogoNewNew.png" />
+    <EmbeddedResource Include="Resources/HKLogoBlack.png" />
+    <EmbeddedResource Include="Resources/DlcList.png" />
+    <EmbeddedResource Include="Resources/Black Fader tot.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="../SFCore/SFCore.csproj" />
+  </ItemGroup>
+</Project>
